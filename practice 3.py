@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_rows', 1000)
 pd.set_option('display.max_columns', 12)
 pd.set_option('display.width', 1000)
 
@@ -68,6 +68,10 @@ IrelandUK = netclean[(netclean["country"].isin(countries)) & (netclean["type"]==
 
 northamerica_countries = ["Mexico" , "United States", "Canada"]
 northamerica = netclean[(netclean["country"].isin(northamerica_countries)) & (netclean["type"]== 'Movie')]
+northamerica = (northamerica.loc[2001:2021])
+print(northamerica)
+
+
 #print(northamerica.head(5))
 
 Frenchcinema = ["France"]
@@ -79,6 +83,7 @@ Frenchmovies = netclean[(netclean["country"].isin(Frenchcinema)) & (netclean["ty
 
 
 #print(netclean.loc[2001:2021])
+
 #print(northamerica.loc[2001:2021])
 
 
@@ -179,3 +184,4 @@ Frenchmovies = netclean[(netclean["country"].isin(Frenchcinema)) & (netclean["ty
 
 # Self merge with suffixes as inner join with left on sequel and right on id
 #orig_seq = sequels_fin.merge(sequels_fin, how='inner', left_on='sequel',
+
