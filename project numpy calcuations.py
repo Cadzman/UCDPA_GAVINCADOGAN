@@ -1,6 +1,9 @@
 import pandas as pd
 
 
+
+
+
 pd.set_option('display.max_rows', 1000)
 pd.set_option('display.max_columns', 12)
 pd.set_option('display.width', 1000)
@@ -172,53 +175,86 @@ print(Frenchmovies.head(5))
 #IrelandUK = netsorind.loc[countries]
 
 
-•	Use functions to create reusable code. [1]
-•	Numpy. [1]
-•	Dictionary or Lists. [1]
+#•	Use functions to create reusable code. [1]
+#•	Numpy. [1]
+#•	Dictionary or Lists. [1]
+
+practice_list = [1,2,3,3,4,5,5,5,5,5,12]
+median1 = np.median(practice_list)
+print(median1)
+
+release_yearnp = netclean['release year'].to_list()
+print(release_yearnp)
+
+#release_year_array = release_year.values
+#median = np.median(release_year_array)
+#print(median)
+
+#print(np.median(release_year))
+
+# Print out the median height of goalkeepers. Replace 'None'
+#print("Median year of movie releases: " + str(np.median(netclean['release_year'])))
 
 
 
-get that iqr shite aswell
+Movies= netclean[netclean['type']=='Movie'].groupby('release_year').count().sum()
+#Movies= netclean[netclean['type']=='Movie'].groupby('release_year').count()
+TV_Show = netclean[netclean['type']=='TV Show'].groupby('release_year').count().sum()
 
+print(Movies)
+print(TV_Show)
+print(TV_Show["show_id"])
+print(Movies["show_id"])
+Movie_total = Movies["show_id"]
+Tv_Total = TV_Show["show_id"]
+
+gap = Movie_total - Tv_Total
+print(gap)
+
+#def difference(column):
+  #  return Movie_total - Tv_Total
+
+#print(netclean['release_year'].difference)
+
+# Print out the median height of goalkeepers. Replace 'None'
+#print("Median height of goalkeepers: " + str(np.median(gk_heights)))
+
+
+# Update to print IQR and median of temperature_c, fuel_price_usd_per_l, & unemployment
+#print(sales[["temperature_c", "fuel_price_usd_per_l", "unemployment"]].agg([iqr, np.median]))
+
+#etflix_stats = netclean.groupby("type")[["release_year"]].agg([difference(), np.median])
+
+
+#Getting empty dataframe for tv
+#Netflix_stats = netclean.groupby("type")[["release_year"]].agg([np.min, np.max, np.mean, np.median])
+#print(Netflix_stats)
+
+#Instead of passing just iqr to .agg(), pass a list of functions without parentheses to .agg().
+
+# Import NumPy and create custom IQR function  ****1 create function 2
+import numpy as np
+
+#def iqr(column):
+#    return column.quantile(0.75) - column.quantile(0.25)
+
+
+
+
+# Update to print IQR and median of temperature_c, fuel_price_usd_per_l, & unemployment
+#print(sales[["temperature_c", "fuel_price_usd_per_l", "unemployment"]].agg([iqr, np.median]))
+
+ #       temperature_c  fuel_price_usd_per_l  unemployment
+#iqr            16.583                 0.073         0.565
+#median         16.967                 0.743         8.099
+
+#get that iqr shite aswell
 
 # For each store type, aggregate unemployment and fuel_price_usd_per_l: get min, max, mean, and median  ****** what grouping  by , what basing it off , and then the calculations
-unemp_fuel_stats = sales.groupby("type")[["unemployment", "fuel_price_usd_per_l"]].agg([np.min, np.max, np.mean, np.median])
+#unemp_fuel_stats = sales.groupby("type")[["unemployment", "fuel_price_usd_per_l"]].agg([np.min, np.max, np.mean, np.median])
 
 # Print unemp_fuel_stats
-print(unemp_fuel_stats)
+#print(unemp_fuel_stats)
 
 
-       amin       amax       mean    median
-    type
-    A    -1098.0  293966.05  23674.667  11943.92
-    B     -798.0  232558.51  25696.678  13336.08
-         unemployment                      fuel_price_usd_per_l
-                 amin   amax   mean median                 amin   amax   mean median
-    type
-    A           3.879  8.992  7.973  8.067                0.664  1.107  0.745  0.735
-    B           7.170  9.765  9.279  9.199                0.760  1.108  0.806  0.803
-
-
-
-
-
-
-
-
-
-
-
-#Merge Dataframes - rated 'R' after the release
-
-#IrelandUK , northamerica , Frenchmovies
-
-#irelanduk_northamerica = IrelandUK.merge(northamerica, how='inner', on=('rating'))
-
-#print(irelanduk_northamerica)
-
-# Merge sequels and financials on index id
-#sequels_fin = sequels.merge(financials, on='id', how='left')
-
-# Self merge with suffixes as inner join with left on sequel and right on id
-#orig_seq = sequels_fin.merge(sequels_fin, how='inner', left_on='sequel',
 
