@@ -12,26 +12,14 @@ pd.set_option('display.width', 1000)
 
 Netflix = pd.read_csv("ucdprojectgc/netflix_titles.csv")
 
-#set index
-#Netflix_ind = Netflix.set_index("show_id")
-#Netflix_ind  =Netflix.set_index(["type", "title"])
-#Netflix_ind  =Netflix.set_index(["type", "release_year"])
+
 Netflix_ind = Netflix.set_index(["release_year"])
 
 print(Netflix_ind.index)
 
 
-#indexing 1
-#print(Netflix_ind.head(5),Netflix_ind.shape)
 
-
-#sorting
-#netsorind = Netflix_ind.sort_values(["show_id"], ascending=[True])
 netsorind=Netflix_ind.sort_values(["release_year"], ascending=[True])
-#netsorind = Netflix_ind.sort_values(["type", "release_year", "title",], ascending=[True, False, True,])
-
-#print(netsorind.head(10))
-
 
 
 missing_val_count = netsorind.isnull().sum()
@@ -53,7 +41,6 @@ northamerica = (northamerica.loc[2001:2021])
 #print(northamerica)
 
 
-#print(northamerica.head(5))
 
 Frenchcinema = ["France"]
 Frenchmovies = netclean[(netclean["country"].isin(Frenchcinema)) & (netclean["type"]== 'Movie')]
@@ -74,49 +61,33 @@ netclean["year_added"].astype('int')
 Netflixmovies= Netflix[Netflix["type"]== 'Movie']
 
 
+
+sns.set_context('notebook')
+sns.set_style('dark')
+sns.set(color_codes=True)
+for p in['bright', 'colorblind']:
+    sns.set_palette(p)
+
+fig, ax = plt.subplots()
+
+
+
+
+
 plt.figure(figsize = (35,10))
-#sns.countplot(x="type", data= netclean)
-#plt.show()
+sns.countplot(y='country',data=Netflixmovies, order = Netflixmovies['country'].value_counts().head(20).index)
 
 
-#*****sns.countplot(x="release_year", data=Netflixmovies)
-#*****plt.xticks(rotation=90)
-
-#sns.countplot(x="release_year", data= )
-
-#fig, ax = plt.subplots()
-
-#netclean[(netclean["country"].isin(countries)) & (netclean["type"]== 'Movie')].hist()
 
 
-#sns.catplot(x="type", data= netclean)
-#plt.show()
-
-#sns.catplot(x='release_year', data= netclean, kind= "count")
-
-#ax2....index
-sns.countplot(y='country',data=Netflixmovies, order = Netflixmovies['country'].value_counts().head(5).index)
 plt.title("Number of movies produced by each country")
+
+
+plt.suptitle("Film production (1942-2021)")
+plt.xlabel("Number of Titles", size=14)
+
 
 plt.show()
 
 
-#sns.catplot(x="type" )
-
-
-# Create a point plot with subgroups
-#[sns.catplot(x="romantic", y="absences",
-#			data=student_data,
- #           kind="point",
-  #          hue="school")
-
-# Show plot
-#plt.show()
-
-# Turn off the confidence intervals for this plot
-#sns.catplot(x="romantic", y="absences",
-	#		data=student_data,
-     #       kind="point",
-      ##      hue="school",
-        #    ci=None)]
 
