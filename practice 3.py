@@ -1,5 +1,6 @@
 import pandas as pd
-
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 pd.set_option('display.max_rows', 1000)
 pd.set_option('display.max_columns', 12)
@@ -78,11 +79,27 @@ northamerica = (northamerica.loc[2001:2021])
 Frenchcinema = ["France"]
 Frenchmovies = netclean[(netclean["country"].isin(Frenchcinema)) & (netclean["type"]== 'Movie')]
 Frenchmovies = (Frenchmovies.loc[2001:2021])
-print(Frenchmovies.head(5))
+#print(Frenchmovies.head(5))
 
 
-#Frenchmovies2 =
 
+
+country_count = netclean['country'].value_counts().to_frame()
+print(country_count)
+
+netclean['date_added'] = pd.to_datetime(netclean['date_added'])
+netclean["year_added"] = netclean["date_added"].dt.year
+netclean["year_added"].astype('int')
+
+
+
+print(netclean)
+
+df['type'].plot.hist()
+plt.show()
+
+
+#print(release_count)
 
 #print(netclean.loc[2001:2021])
 
@@ -170,37 +187,6 @@ print(Frenchmovies.head(5))
 #Years = [(2006, 2007, 2008, 2009)]
 #IrelandUK = netsorind[netsorind["country"].isin(countries)]
 #IrelandUK = netsorind.loc[countries]
-
-
-•	Use functions to create reusable code. [1]
-•	Numpy. [1]
-•	Dictionary or Lists. [1]
-
-
-
-get that iqr shite aswell
-
-
-# For each store type, aggregate unemployment and fuel_price_usd_per_l: get min, max, mean, and median  ****** what grouping  by , what basing it off , and then the calculations
-unemp_fuel_stats = sales.groupby("type")[["unemployment", "fuel_price_usd_per_l"]].agg([np.min, np.max, np.mean, np.median])
-
-# Print unemp_fuel_stats
-print(unemp_fuel_stats)
-
-
-       amin       amax       mean    median
-    type
-    A    -1098.0  293966.05  23674.667  11943.92
-    B     -798.0  232558.51  25696.678  13336.08
-         unemployment                      fuel_price_usd_per_l
-                 amin   amax   mean median                 amin   amax   mean median
-    type
-    A           3.879  8.992  7.973  8.067                0.664  1.107  0.745  0.735
-    B           7.170  9.765  9.279  9.199                0.760  1.108  0.806  0.803
-
-
-
-
 
 
 
