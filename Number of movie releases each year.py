@@ -79,59 +79,10 @@ sns.countplot(x="release_year", data=Netflixmovies)
 plt.xticks(rotation=90)
 
 
-plt.suptitle("Films released each year (1942-2021)")
+plt.suptitle("Films released each year (1942-2021)", fontsize = 18, fontweight='bold')
 plt.xlabel("Year", size=14)
 plt.ylabel("Number of Titles", size=14)
 
 plt.show()
 
-
-
-
-#plt.xlabel("Continent", size=14)
-#plt.ylabel("LifeExp", size=14)
-#plt.savefig("bar_plot_Seaborn_Python.png")
-
-
-#*****plt.figure(figsize = (35,10))
-#*****sns.countplot(x="release_year", data=Netflixmovies)
-#*****plt.xticks(rotation=90)
-
-#sns.countplot(x="release_year", data= )
-
-#fig, ax = plt.subplots()
-
-#netclean[(netclean["country"].isin(countries)) & (netclean["type"]== 'Movie')].hist()
-
-
-#sns.catplot(x="type", data= netclean)
-#plt.show()
-
-#sns.catplot(x='release_year', data= netclean, kind= "count")
-
-#ax2....index
-#*****sns.countplot(y='country',data=Netflixmovies, order = Netflixmovies['country'].value_counts().head(5).index)
-#****plt.title("Number of movies produced by each country")
-
-#***plt.show()
-
-
-#sns.catplot(x="type" )
-
-
-# Create a point plot with subgroups
-#[sns.catplot(x="romantic", y="absences",
-#			data=student_data,
- #           kind="point",
-  #          hue="school")
-
-# Show plot
-#plt.show()
-
-# Turn off the confidence intervals for this plot
-#sns.catplot(x="romantic", y="absences",
-	#		data=student_data,
-     #       kind="point",
-      ##      hue="school",
-        #    ci=None)]
 

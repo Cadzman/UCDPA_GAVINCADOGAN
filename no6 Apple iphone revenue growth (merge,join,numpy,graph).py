@@ -54,7 +54,7 @@ sns.scatterplot(data=Applesalesrevenue,
 
 ax.set(xlabel="Financial Quarter",
        ylabel = "Iphone Revenue - $hundred millions",
-       title = "Growth in iphone Revenue",
+       title = "Growth in iphone Revenue"
        )
 
 plt.xticks(rotation=90)
