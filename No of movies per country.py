@@ -74,7 +74,7 @@ fig, ax = plt.subplots()
 
 
 
-plt.figure(figsize = (35,10))
+plt.figure(figsize = (20,20))
 sns.countplot(y='country',data=Netflixmovies, order = Netflixmovies['country'].value_counts().head(20).index)
 
 
